@@ -26,7 +26,9 @@ class Calculator {
     if (typeof b === "string") b = Number(b);
     if (typeof a !== "number") throw new Error(`${a} is not a valid number`);
     if (typeof b !== "number") throw new Error(`${b} is not a valid number`);
-    return a * b;
+
+    // + 0: Edge case when we get -0
+    return a * b + 0;
   }
 }
 

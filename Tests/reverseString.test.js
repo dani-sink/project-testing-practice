@@ -59,3 +59,9 @@ test("reversalString called an odd number of times returns the reversed string",
     expect(curStr).toBe(reversed);
   });
 });
+
+test("reverseString only accepts strings", () => {
+  expect(() => reverseString()).toThrow(Error("Invalid string"));
+  expect(() => reverseString(1)).toThrow(Error("Invalid string"));
+  expect(() => reverseString(null)).toThrow(Error("Invalid string"));
+});

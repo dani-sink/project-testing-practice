@@ -16,6 +16,17 @@ test("add properly adds two numbers", () => {
   expect(calc.add(-1, 2)).toBe(1);
   expect(calc.add(2, 3)).toBe(5);
   expect(calc.add(-2, -3)).toBe(-5);
+  expect(calc.add(5, 0)).toBe(5);
+  expect(calc.add(-5, 0)).toBe(-5);
+  expect(calc.add(Number.MAX_SAFE_INTEGER, 2));
+});
+
+test("add with floats", () => {
+  const calc = new Calculator();
+
+  expect(calc.add(1.1, 1)).toBeCloseTo(2.1);
+  expect(calc.add(-1.1, 1)).toBeCloseTo(-0.1);
+  expect(calc.add(0.1, 0.2)).toBeCloseTo(0.3);
 });
 
 test("add properly adds numeric strings", () => {
@@ -42,6 +53,9 @@ test("subtract properly subtracts two numbers", () => {
   expect(calc.subtract(-1, 2)).toBe(-3);
   expect(calc.subtract(2, 3)).toBe(-1);
   expect(calc.subtract(-2, -3)).toBe(1);
+  expect(calc.subtract(5, 0)).toBe(5);
+  expect(calc.subtract(-5, 0)).toBe(-5);
+  expect(calc.subtract(Number.MIN_SAFE_INTEGER, 2));
 });
 
 test("subtract properly subtracts numeric strings", () => {
@@ -75,6 +89,8 @@ test("divide properly divides two numbers", () => {
   expect(calc.divide(1, 2)).toBe(0.5);
   expect(calc.divide(-4, 2)).toBe(-2);
   expect(calc.divide(-4, -2)).toBe(2);
+  expect(calc.divide(4, -2)).toBe(-2);
+  expect(calc.divide(0, 4)).toBe(0);
 });
 
 test("divide properly divides numeric strings", () => {
@@ -112,6 +128,8 @@ test("multiply properly multiplies two numbers", () => {
   expect(calc.multiply(1, 2)).toBe(2);
   expect(calc.multiply(-4, 2)).toBe(-8);
   expect(calc.multiply(-4, -2)).toBe(8);
+  expect(calc.multiply(1, 0)).toBe(0);
+  expect(calc.multiply(-4, 0)).toBe(0);
 });
 
 test("multiply properly multiplies numeric strings", () => {

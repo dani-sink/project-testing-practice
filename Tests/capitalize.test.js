@@ -59,3 +59,9 @@ test("capitalize with multiple words", () => {
   expect(capitalize("hello wonderful world")).toBe("Hello wonderful world");
   expect(capitalize("hello WONDERFUL world")).toBe("Hello wonderful world");
 });
+
+test("capitalize only accepts strings", () => {
+  expect(() => capitalize()).toThrow(Error("Invalid string"));
+  expect(() => capitalize(1)).toThrow(Error("Invalid string"));
+  expect(() => capitalize(null)).toThrow(Error("Invalid string"));
+});
